@@ -1,12 +1,54 @@
+import java.util.Random;
+
 /**
- * Методы в классах следовало сделать публичными и добавить в них проверки.
+ * if-ы можно было использовать в конструкторе, а не в set-ах;
  */
 
 public class Lesson4 {
     public static void main(String[] args) {
+//        Задание 4.1
+//        Композиция проявляется в том, что класс ChildDwarf зависит от Animal,
+//        и при создании объекта ChildDwarf мы обязательно должны передать ему объект Animal
         Animal cat = new Animal("Барсик", 2, 3, 1, 10);
-        Weapon weapon = new Weapon("Граф", 1, 5, 6);
-        Dwarf dwarf = new Dwarf("Гора", 30, 2, 0, 4, 1.1, 3);
+        ChildDwarf dwarf = new ChildDwarf("Гора", 2, 0, 0, 4, 0, 3, cat);
+        dwarf.playWithAnimal();
+
+        Arrow[] arrows = new Arrow[3];
+        arrows[0] = new Arrow(5);
+        arrows[1] = new Arrow(6);
+        arrows[2] = new Arrow(7);
+        Crossbow crossbow = new Crossbow("Хищник", 0, 40, 12, arrows);
+        crossbow.fire();
+
+//        Первая часть задания 4.2
+        Animal animal = new Animal("Животное", 2, 4, 1, 12);
+        animal.foo();
+        Dog dog = new Dog("Шарик", 3, 5, 1, 11);
+        dog.foo();
+        Otter otter = new Otter("Бенедикт", 1, 2, 2, 10, 7);
+        otter.foo();
+
+//        Вторая часть задания 4.2
+        Random random = new Random();
+        Animal[] array = new Animal[500];
+        for (int i = 0; i < array.length; i++) {
+            int number = random.nextInt(2);
+            if (number == 0) {
+                array[i] = new Otter("Блеск", 2, 3, 2, 9, 8);
+                continue;
+            }
+            array[i] = new Dog("Одри", 1, 3, 1, 10);
+        }
+        for (int i = 0; i < array.length; i++) {
+            array[i].foo();
+        }
+//        В процессе выполнения вызов метода foo() происходит у дочерних объектов,
+//        так как в каждую ячейку массива мы помещали именно эти объекты
+
+
+//        4.3. Наглядный пример, который демонстрирует, как работает ad hoc полиморфизм.
+        otter.plus(5);
+        otter.plus("Выдра", "умничка");
     }
 }
 
@@ -28,6 +70,10 @@ class Animal {
         this.mass = mass;
         this.kind = kind;
         this.speed = speed;
+    }
+
+    void foo() {
+        System.out.println("Animal");
     }
 
     public String getName() {
@@ -275,8 +321,82 @@ class Otter extends Animal {
         setSpeed(speed);
     }
 
-    Otter(String n, int a, double m, int k, double spd, int sw) {
-        super(n, a, m, k, spd);
-        this.swim = sw;
+    void foo() {
+        System.out.println("Otter");
     }
+
+    public Otter(String name, int age, double mass, int kind, double speed, int swim) {
+        super(name, age, mass, kind, speed);
+        this.swim = swim;
+    }
+
+
+    //4.3. Наглядный пример, который демонстрирует, как работает ad hoc полиморфизм
+    public int plus(int number) {
+        return number + number;
+    }
+
+    public String plus(String string, String string2) {
+        return string + ", " + string2;
+    }
+}
+
+
+class Dog extends Animal {
+
+    public Dog(String name, int age, double mass, int kind, double speed) {
+        super(name, age, mass, kind, speed);
+    }
+
+    void foo() {
+        System.out.println("Dog");
+    }
+}
+
+//Задание 4.1
+class ChildDwarf extends Dwarf {
+
+    private Animal animal;
+
+    public ChildDwarf(String name, int age, int thoughts, int skills, int HP, double drink, int workId, Animal animal) {
+        super(name, age, thoughts, skills, HP, drink, workId);
+        this.animal = animal;
+    }
+
+    public void playWithAnimal() {
+        System.out.println("Играю с " + animal.getName());
+    }
+}
+
+class Crossbow extends Weapon {
+    private Arrow[] arrows;
+
+    public Crossbow(String name, int kind, int damage, int range, Arrow[] arrows) {
+        super(name, kind, damage, range);
+        this.arrows = arrows;
+    }
+
+    public void fire() {
+        for (int i = 0; i < arrows.length; i++) {
+            System.out.println("Выпущена стрела " + (i + 1));
+        }
+    }
+
+}
+
+class Arrow {
+    private int length;
+
+    public Arrow(int length) {
+        this.length = length;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
 }
