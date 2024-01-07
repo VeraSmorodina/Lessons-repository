@@ -5,15 +5,6 @@ public class Main18 {
         search(generateList(), 9);
     }
     //Задание 2
-    public static ArrayList<Integer> generateList(){
-        ArrayList <Integer> array = new ArrayList<>();
-        Random random = new Random();
-        for (int i = 0; i < 100; i++) {
-            array.add(random.nextInt(10)+1);
-        }
-        return array;
-    }
-    //Задание 2
     public static ArrayList<Integer> search(ArrayList<Integer> values, int N){
         ArrayList <Integer> result = new ArrayList<>();
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -30,6 +21,15 @@ public class Main18 {
                 result.add(key);
         }
         return result;
+    }
+    
+    public static ArrayList<Integer> generateList(){
+        ArrayList <Integer> array = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < 100; i++) {
+            array.add(random.nextInt(10)+1);
+        }
+        return array;
     }
     //Задание 1
     public static void fillMap(){
@@ -50,7 +50,25 @@ public class Main18 {
 }
 
 ```
-
+Тест ко 2-ому заданию
+```java
+public class Main18Test {
+    @Test
+    public void test1() {
+        ArrayList<Integer> number = new ArrayList<>();
+        number.add(1);
+        number.add(1);
+        number.add(1);
+        number.add(2);
+        number.add(2);
+        number.add(2);
+        number.add(2);
+        number.add(2);
+        ArrayList<Integer> list1 = Main18.search(number, 4);
+        assertEquals(2, (int) list1.get(0));
+    }
+}
+```
 
 
 
