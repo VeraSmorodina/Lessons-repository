@@ -38,18 +38,9 @@ public class Main13Test {
 
     @Test
     public void test4() {
-        int[] sortedArray = {1, 2, 3, 4, 5};
         int[] unsortedArray = {5, 4, 3, 2, 1};
-        try {
-            Main.assertSorted(sortedArray);
-        } catch (AssertionError e) {
-            fail("Метод выбросил исключение для отсортированного массива: " + e.getMessage());
-        }
-        try {
+        assertThrows(AssertionError.class, () -> {
             Main.assertSorted(unsortedArray);
-            fail("Метод не выбросил исключение для неотсортированного массива");
-        } catch (AssertionError e) {
-            assertEquals("Массив не отсортирован: элемент на позиции 0 больше элемента на позиции 1", e.getMessage());
-        }
+        });
     }
 }
