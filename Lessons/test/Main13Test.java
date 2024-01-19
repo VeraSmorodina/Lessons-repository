@@ -1,7 +1,8 @@
 import Task13.Main;
 import org.junit.Test;
-
+import org.junit.jupiter.api.RepeatedTest;
 import java.util.Arrays;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -42,5 +43,13 @@ public class Main13Test {
         assertThrows(AssertionError.class, () -> {
             Main.assertSorted(unsortedArray);
         });
+    }
+
+    @Test
+    @RepeatedTest(value = 5, name = "Test random number generate - repetition {currentRepetition}")
+    public void testRandomNumber() {
+        Random random = new Random();
+        int result = random.nextInt(50) + 1;
+        assertTrue(result >= 1 && result <= 50);
     }
 }
