@@ -4,6 +4,7 @@ import Task14.Main2;
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.io.File;
+import java.util.ArrayList;
 
 public class MainTest {
     @Test
@@ -20,7 +21,10 @@ public class MainTest {
     }
     @Test
     public void sumTest1(){
-        int s = Main1.sum(1,2, "/Users/skrai/Documents/Development/StudyProjects/Lessons-repository/");
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(1);
+        arrayList.add(2);
+        int s = Main1.sum(arrayList, "/Users/skrai/Documents/Development/StudyProjects/Lessons-repository/");
         int expected = 39;
         assertEquals(expected, s);
     }

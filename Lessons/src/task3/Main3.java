@@ -1,10 +1,7 @@
 package task3;
 
 public class Main3 {
-    **
-            * Рефлексия по предыдущему:
-            * В полях классов следовало указывать не возможные виды объектов, а свойства объектов.
- */
+
         public static void main(String[] args) {
             Animal cat = new Animal();
             cat.name = "Барсик";
