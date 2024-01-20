@@ -26,7 +26,17 @@ public class Main1 {
                 br1.close();
             }
 
-        } catch (Exception e) {
+        }
+        catch (FileNotFoundException e){
+            System.err.println("Файл отсутствует: " + e.getMessage());
+        }
+        catch (IOException e) {
+            System.err.println("Ошибка ввода-вывода: " + e.getMessage());
+        }
+        catch (NumberFormatException e) {
+            System.err.println("Не удалось преобразовать строку в целое число: " + e.getMessage());
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
         return sum;
