@@ -24,9 +24,10 @@ public class MainTest {
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
         arrayList.add(2);
-        int s = Main1.sum(arrayList, "/Users/skrai/Documents/Development/StudyProjects/Lessons-repository/");
+        Integer[] s = Main1.sum(arrayList, "/Users/skrai/Documents/Development/StudyProjects/Lessons-repository/");
         int expected = 39;
-        assertEquals(expected, s);
+        int one = s[0];
+        assertEquals(expected, one);
     }
 
     @Test
