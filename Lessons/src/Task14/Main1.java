@@ -15,11 +15,10 @@ public class Main1 {
         files.add(2);
         files.add(3);
         Integer[] res = sum(files, "/Users/skrai/Documents/Development/StudyProjects/Lessons-repository/");
-        System.out.println(res[0]);
     }
 
     public static Integer[] sum(ArrayList<Integer> array, String path) {
-        Integer[] result= new Integer[2];
+        Integer[] result = new Integer[2];
         result[1] = 0;
         int sum = 0;
         try {
@@ -33,18 +32,13 @@ public class Main1 {
                 }
                 br1.close();
             }
-
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             result[1] = 1;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             result[1] = 2;
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             result[1] = 3;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             result[1] = 4;
         }
         result[0] = sum;
