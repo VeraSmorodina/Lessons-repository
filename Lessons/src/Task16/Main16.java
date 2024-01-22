@@ -6,16 +6,14 @@ import java.util.zip.*;
 public class Main16 {
     public static void main(String[] args) throws IOException {
 //        Вызов метода addFileInToTheArchive, который добавляет файлы из массива nameFiles в архив Test16.zip.
-        addFileInToTheArchive("Test16.zip",
+        addFileInToTheArchive("/Users/skrai/Documents/Development/StudyProjects/Lessons-repository/Lessons/src/Task16/Test16.zip",
                 new String[]{"9.txt", "10.txt"});
     }
 
 //Определение метода addFileInToTheArchive, который принимает имя архива и массив имен файлов для добавления в архив.
-    public static void addFileInToTheArchive(String nameArchive, String[] nameFiles) throws IOException {
-//      Сохраняем в переменную путь к каталогу
-        String url = "/Users/skrai/Documents/Development/StudyProjects/Lessons-repository/Lessons/src/Task16/";
+    public static void addFileInToTheArchive(String path, String[] nameFiles) throws IOException {
 //        Создание объекта File для представления архива ZIP.
-        File zipFile = new File(url + nameArchive);
+        File zipFile = new File(path);
         // Создаем временный файл для временного архива
         File tempFile = File.createTempFile(zipFile.getName(), null);
         // Удаляем этот временный файл, когда программа завершает работу
@@ -59,7 +57,7 @@ public class Main16 {
 //        Цикл пробегается по всем именам файлов, которые нужно добавить в архив.
         for (String file : nameFiles) {
 //            Создаем поток ввода InputStream для чтения содержимого файла, который нужно добавить.
-            InputStream in = new FileInputStream(url + file);
+            InputStream in = new FileInputStream(file);
 //            Добавляем новый элемент (файл) в новый архив.
             out.putNextEntry(new ZipEntry(file));
 //            Читаем содержимое файла и записываем его в новый архив.
