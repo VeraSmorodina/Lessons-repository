@@ -13,7 +13,7 @@ public class Main17 {
 
 //    Задание 4.1
     public static void changeImageFormat(String format1, String format2) throws Exception {
-        String path = "./Lessons/src/Task177";
+        String path = ".";
         File my_fil = new File(path);
         File[] array = my_fil.listFiles();
         ArrayList<String> names = new ArrayList<>();
