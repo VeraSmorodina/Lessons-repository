@@ -1,13 +1,13 @@
 
 ```java
-public class Main {
+public class Main17 {
     public static void main(String[] args) throws Exception {
         changeImageFormat("jpg", "png");
     }
 
-//    Задание 4.1
+    //    Задание 4.1
     public static void changeImageFormat(String format1, String format2) throws Exception {
-        String path = "./Lessons/src/Task177";
+        String path = ".";
         File my_fil = new File(path);
         File[] array = my_fil.listFiles();
         ArrayList<String> names = new ArrayList<>();
